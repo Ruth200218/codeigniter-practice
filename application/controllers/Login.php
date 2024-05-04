@@ -7,7 +7,7 @@ class Login extends CI_Controller
     {
         parent::__construct();
         $this->load->helper(array('get_menu', 'auth/login_rules'));
-        $this->load->library('form_validation');
+        $this->load->library(array('form_validation', 'session'));
         $this->load->model('Auth');
     }
 
@@ -40,7 +40,32 @@ class Login extends CI_Controller
                 $this->output->set_status_header(401);
                 exit;
             }
-            echo json_encode(array('msg' => 'Welcome'));
+            $data = array(
+                'id' => $res->id,
+                'name' => $res->name,
+                'lastname' => $res->lastname,
+                'state' => $res->state,
+                'porfile' => $res->porfile,
+                'is_logged' => TRUE,
+            );
+            $this->session->set_userdata($data);
+            $this->session->set_flashdata('msg', 'Welcome ' . '' . $data['name']  . ' ' . $data['lastname']);
+            echo json_encode(array('url' => base_url('dashboard')));
         }
+    }
+
+    public function logout()
+    {
+        $user = array(
+            'id',
+            'name',
+            'lastname',
+            'state',
+            'porfile',
+            'is_logged'
+        );
+        $this->session->unset_userdata($user);
+        $this->session->sess_destroy();
+        redirect('login');
     }
 }
