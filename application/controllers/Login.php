@@ -11,8 +11,8 @@ class Login extends CI_Controller
 
     public function index()
     {
-        $data['home'] = home_url();
+        $home['home'] = home_url();
         $this->load->view('header');
-        $this->load->view('login', $data);
+        $this->load->view('login', $home);
     }
 }
