@@ -35,7 +35,7 @@ class Register extends CI_Controller
             array(
                 'field' => 'name',
                 'label' => 'Name',
-                'rules' => 'required|alpha',
+                'rules' => 'required|alpha|trim',
                 'errors' => array(
                     'required' => 'You must provide a %s.',
                 ),
@@ -43,7 +43,7 @@ class Register extends CI_Controller
             array(
                 'field' => 'lastname',
                 'label' => 'Last Name',
-                'rules' => 'required|alpha',
+                'rules' => 'required|alpha|trim',
                 'errors' => array(
                     'required' => 'You must provide a %s.',
                 ),
@@ -52,7 +52,7 @@ class Register extends CI_Controller
             array(
                 'field' => 'email',
                 'label' => 'Email',
-                'rules' => 'required|valid_email',
+                'rules' => 'required|valid_email|trim',
                 'errors' => array(
                     'required' => 'You must provide a %s.',
                 ),
@@ -60,7 +60,7 @@ class Register extends CI_Controller
             array(
                 'field' => 'password',
                 'label' => 'Password',
-                'rules' => 'required|min_length[8]',
+                'rules' => 'required|min_length[8]|trim',
                 'errors' => array(
                     'required' => 'You must provide a %s.',
                 ),
@@ -68,7 +68,7 @@ class Register extends CI_Controller
             array(
                 'field' => 'password-confirm',
                 'label' => 'PasswordConfirmation',
-                'rules' => 'required|min_length[8]',
+                'rules' => 'required|min_length[8]|trim',
                 'errors' => array(
                     'required' => 'You must provide a %s.',
                 ),
